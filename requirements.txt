@@ -1,0 +1,10 @@
+pandas
+numpy
+random
+folium
+deap
+streamlit
+streamlit-folium
+matplotlib
+xlsxwriter
+
