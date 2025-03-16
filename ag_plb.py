@@ -130,7 +130,7 @@ if df is not None:
 
         # Exibir resultados
         dist_percent = abs((distancia_padrao - distancia_customizada)/(distancia_padrao))
-        tempo = abs(tempo_padrao - tempo_padrao )
+        tempo = abs(tempo_padrao - tempo_customizado )
         tempo_percent = (tempo/tempo_padrao)
 
         st.write(f"Distância total (padrão): {abs(distancia_padrao):.2f} km")
@@ -241,11 +241,12 @@ if df is not None:
         # Calcular desvio padrão
         distancia_media = df_padrao["Distância (km)"].mean()
         desvio_padrao_distancia = df_padrao["Distância (km)"].std()
-        # Calcular o desvio padrão percentual em relação à média
-        desvio_padrao_percentual = (desvio_padrao_distancia / desvio_padrao_distancia) * 100
+        desvio_padrao_percentual = (desvio_padrao_distancia / distancia_media) * 100
+        
         tempo_medio =  df_padrao["Tempo (s)"].mean()
         desvio_padrao_tempo = df_padrao["Tempo (s)"].std()
-        desvio_padrao_percentual_temp = (desvio_padrao_tempo/tempo_medio)*100
+        desvio_padrao_percentual_temp = (desvio_padrao_tempo / tempo_medio)*100
+        
         st.write(f"Desvio padrão da distância: {desvio_padrao_distancia:.2f} km")
         st.write(f"Desvio padrão do tempo: {desvio_padrao_tempo:.2f} segundos")
         st.write(f"Desvio padrão percentual: {desvio_padrao_percentual:.2f}%")
@@ -264,15 +265,6 @@ if df is not None:
         ax[1].set_ylabel("Frequência")
 
         st.pyplot(fig)
-
-        # # Disponibilizar dataframe para download
-        # csv_padrao = df_padrao.to_csv(index=False, sep="|")
-        # st.download_button(
-        #     label="Download dos resultados padrão",
-        #     data=csv_padrao,
-        #     file_name="resultados_padrao.csv",
-        #     mime="text/csv"
-        # )
 
         # Análise 2: 10 rodadas com configuração customizada e parâmetros aleatórios
         resultados_customizados = []
