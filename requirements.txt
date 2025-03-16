@@ -5,6 +5,5 @@ deap
 streamlit
 streamlit-folium
 matplotlib
-io
 xlsxwriter
 
