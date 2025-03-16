@@ -1,6 +1,5 @@
 pandas
 numpy
-random
 folium
 deap
 streamlit
